@@ -30,4 +30,24 @@
         android:layout_height="50dp"
         android:textSize="18sp"
         android:text="@string/go"/>
+
+
+    <Button
+        android:id="@+id/button_dependencies"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:text="dependencies"/>
+
+
+    <Button
+        android:id="@+id/button_subcomponent"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textSize="18sp"
+        android:text="subcomponent"/>
+
+
+
+
 </LinearLayout>

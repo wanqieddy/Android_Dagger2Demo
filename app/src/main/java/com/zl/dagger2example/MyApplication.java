@@ -9,6 +9,7 @@ import com.zl.dagger2example.di.components.DaggerAppComponent;
 import com.zl.dagger2example.di.components.DaggerLoginComponent;
 import com.zl.dagger2example.di.components.DaggerStorageComponent;
 import com.zl.dagger2example.di.components.LoginComponent;
+import com.zl.dagger2example.di.components.SomeClassADependenciesComponent;
 import com.zl.dagger2example.di.components.StorageComponent;
 import com.zl.dagger2example.di.components.UserComponent;
 import com.zl.dagger2example.di.modules.AppModule;
@@ -40,7 +41,6 @@ public class MyApplication extends Application {
         component = DaggerStorageComponent.builder().storageModule(new StorageModule(this)).build();
 
         mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
-
 
         mUserComponent = mAppComponent.createUserComponent(new UserModule());
         //mUserComponent = DaggerUserComponent.builder().userModule(new UserModule()).build();

@@ -8,21 +8,20 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.zl.dagger2example.ui.SecondActivity">
+    tools:context=".ui.DependenciesActivity">
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/button9"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="18sp"
         android:text="@string/min"
         />
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/button10"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="18sp"
         android:text="@string/guan"
         />
-
 </LinearLayout>

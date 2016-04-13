@@ -15,5 +15,4 @@ public interface UserComponent {
     void inject(SecondActivity mSecondActivity);
 
 
-
 }
