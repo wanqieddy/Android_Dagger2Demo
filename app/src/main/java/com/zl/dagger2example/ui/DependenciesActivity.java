@@ -1,6 +1,5 @@
 package com.zl.dagger2example.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -53,11 +52,16 @@ public class DependenciesActivity extends AppCompatActivity {
 
         someClassADependenciesComponent = DaggerSomeClassADependenciesComponent.builder().moduleA(new ModuleA()).build();
         //someClassADependenciesComponent.inject(this);
+        Log.i("ss","__________________________________________________someClassADependenciesComponent:"+someClassADependenciesComponent);
+        Log.i("ss","__________________________________________________someClassADependenciesComponent.someClassA1():"+someClassADependenciesComponent.someClassA1());
         Log.i("ss","_______________________1________________mSomeClassA1:"+mSomeClassA1+"____________someClassB1:"+someClassB1);
 
         someClassBDependenciesComponent = DaggerSomeClassBDependenciesComponent.builder().moduleB(new ModuleB()).someClassADependenciesComponent(someClassADependenciesComponent).build();
         someClassBDependenciesComponent.inject(this);
+        Log.i("ss","__________________________________________________someClassBDependenciesComponent.someClassA1():"+someClassBDependenciesComponent.someClassA1());
+
         Log.i("ss","_______________________2________________mSomeClassA1:"+mSomeClassA1+"____________someClassB1:"+someClassB1);
+
     }
 
 

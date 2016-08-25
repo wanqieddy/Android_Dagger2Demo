@@ -9,11 +9,13 @@ import android.widget.Button;
 import com.zl.dagger2example.R;
 import com.zl.dagger2example.bean.SomeClassA1;
 import com.zl.dagger2example.bean.SomeClassB1;
+import com.zl.dagger2example.bean.SomeClassC1;
 import com.zl.dagger2example.di.components.DaggerSomeClassASubComponent;
 import com.zl.dagger2example.di.components.SomeClassASubComponent;
 import com.zl.dagger2example.di.components.SomeClassBSubComponent;
 import com.zl.dagger2example.di.modules.ModuleA;
 import com.zl.dagger2example.di.modules.ModuleB;
+import com.zl.dagger2example.di.modules.ModuleC;
 
 import javax.inject.Inject;
 
@@ -38,6 +40,9 @@ public class SubComponentActivity extends AppCompatActivity {
     @Inject
     SomeClassB1 someClassB1;
 
+    @Inject
+    SomeClassC1 someClassC1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,13 +51,13 @@ public class SubComponentActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         SomeClassASubComponent someClassASubComponent = DaggerSomeClassASubComponent.builder().moduleA(new ModuleA()).moduleB(new ModuleB()).build();
-        someClassASubComponent.inject(this);
-        Log.i("ss","__________1_______________mSomeClassA1:"+mSomeClassA1+"_____someClassB1:"+someClassB1);
+        //someClassASubComponent.inject(this);
+        Log.i("ss","__________1_______________mSomeClassA1:"+mSomeClassA1+"_____someClassB1:"+someClassB1+"___________someClassC1:"+someClassC1);
 
 
-        SomeClassBSubComponent someClassBSubComponent = someClassASubComponent.someClassBSubComponent(new ModuleB());
+        SomeClassBSubComponent someClassBSubComponent = someClassASubComponent.someClassBSubComponent(new ModuleC());
         someClassBSubComponent.inject(this);
-        Log.i("ss","___________2______________mSomeClassA1:"+mSomeClassA1+"_____someClassB1:"+someClassB1);
+        Log.i("ss","___________2______________mSomeClassA1:"+mSomeClassA1+"_____someClassB1:"+someClassB1+"___________someClassC1:"+someClassC1);
     }
 
 

@@ -1,6 +1,7 @@
 package com.zl.dagger2example;
 
 import android.app.Application;
+import android.util.Log;
 
 import com.zl.dagger2example.bean.Login;
 import com.zl.dagger2example.bean.Person;
@@ -9,7 +10,6 @@ import com.zl.dagger2example.di.components.DaggerAppComponent;
 import com.zl.dagger2example.di.components.DaggerLoginComponent;
 import com.zl.dagger2example.di.components.DaggerStorageComponent;
 import com.zl.dagger2example.di.components.LoginComponent;
-import com.zl.dagger2example.di.components.SomeClassADependenciesComponent;
 import com.zl.dagger2example.di.components.StorageComponent;
 import com.zl.dagger2example.di.components.UserComponent;
 import com.zl.dagger2example.di.modules.AppModule;
@@ -24,7 +24,7 @@ import javax.inject.Inject;
  */
 public class MyApplication extends Application {
 
-    private StorageComponent component;
+    private StorageComponent storageComponent;
     private AppComponent mAppComponent;
     private UserComponent mUserComponent;
     private LoginComponent mLoginComponent;
@@ -33,12 +33,19 @@ public class MyApplication extends Application {
     Person mPerson;
 
     @Inject
+    Person mPersonTest;
+
+    @Inject
     Login mLogin;
+
+    @Inject
+    Login mLoginTest;
+
     @Override
     public void onCreate() {
         super.onCreate();
 
-        component = DaggerStorageComponent.builder().storageModule(new StorageModule(this)).build();
+        storageComponent = DaggerStorageComponent.builder().storageModule(new StorageModule(this)).build();
 
         mAppComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
 
@@ -49,10 +56,14 @@ public class MyApplication extends Application {
         mLoginComponent = DaggerLoginComponent.builder().loginModule(new LoginModule()).build();
         mLoginComponent.inject(this);
 
+        Log.i("ss","________________________________mPerson:"+mPerson);
+        Log.i("ss","________________________________mPersonTest:"+mPersonTest);
+        Log.i("ss","________________________________mLogin:"+mLogin);
+        Log.i("ss","________________________________mLoginTest:"+mLoginTest);
     }
 
     public StorageComponent getStorageComponent() {
-        return component;
+        return storageComponent;
     }
 
     public AppComponent getAppComponent() {

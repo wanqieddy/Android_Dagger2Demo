@@ -3,8 +3,6 @@ package com.zl.dagger2example.di.modules;
 import com.zl.dagger2example.bean.Login;
 import com.zl.dagger2example.di.qualifiers.User;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 

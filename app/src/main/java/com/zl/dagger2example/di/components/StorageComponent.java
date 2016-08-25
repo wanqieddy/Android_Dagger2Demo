@@ -25,5 +25,4 @@ public interface StorageComponent {
     TestBeanA getBeanA();
     TestBeanB getBeanB();
     void inject(MainActivity mMainActivity);
-
 }

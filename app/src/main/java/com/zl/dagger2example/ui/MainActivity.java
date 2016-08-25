@@ -2,12 +2,8 @@ package com.zl.dagger2example.ui;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,20 +12,11 @@ import android.widget.Toast;
 import com.zl.dagger2example.MyApplication;
 import com.zl.dagger2example.R;
 import com.zl.dagger2example.bean.Person;
-import com.zl.dagger2example.bean.SomeClassA1;
+import com.zl.dagger2example.bean.TestBeanA;
+import com.zl.dagger2example.bean.TestBeanB;
 import com.zl.dagger2example.bean.TestUserInfo;
-import com.zl.dagger2example.di.components.DaggerSomeClassADependenciesComponent;
-import com.zl.dagger2example.di.components.DaggerSomeClassBDependenciesComponent;
-import com.zl.dagger2example.di.components.SomeClassADependenciesComponent;
-import com.zl.dagger2example.di.components.SomeClassADependenciesComponent;
-import com.zl.dagger2example.di.components.SomeClassBDependenciesComponent;
 import com.zl.dagger2example.di.components.StorageComponent;
-import com.zl.dagger2example.di.modules.ModuleA;
-import com.zl.dagger2example.di.modules.ModuleB;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Calendar;
+import com.zl.dagger2example.utils.Storage;
 
 import javax.inject.Inject;
 
@@ -64,9 +51,19 @@ public class MainActivity extends AppCompatActivity {
     @Inject
     TestUserInfo mTestUserInfo;
 
+    @Inject
+    Storage storage;
+
+    @Inject
+    TestBeanA testBeanA;
+
+    @Inject
+    TestBeanB testBeanB;
     StorageComponent mStorageComponent;
+
     private final String KEY = "Dagger 2";
 
+    //private GoogleApiClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +74,15 @@ public class MainActivity extends AppCompatActivity {
         mStorageComponent = ((MyApplication) this.getApplication()).getStorageComponent();
         mStorageComponent.inject(this);//注入MainActivity
         mStorageComponent.execute().storage();//执行储存操作
+
+        Log.i("ss", "_____________________________________storage:" + storage);
+        storage.storage();
+
         Log.i("ss", "_______________MainActivity_________________________mTestUserInfo:" + mTestUserInfo);
+
+        Log.i("ss", "_____________________________________testBeanA:" + testBeanA);
+        Log.i("ss", "_____________________________________testBeanB:" + testBeanB);
+
         Log.i("ss", "_____________________________________mStorageComponent.getBeanA():" + mStorageComponent.getBeanA());
         Log.i("ss", "_____________________________________mStorageComponent.getBeanB():" + mStorageComponent.getBeanB());
 
@@ -93,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
+        //client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
     @OnClick({
@@ -106,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         switch (v.getId()) {
             case R.id.button1:
                 //Toast.makeText(this,mPreferences.getString(KEY,"---"),Toast.LENGTH_SHORT).show();
-                Toast.makeText(this, mStorageComponent.execute().getStorage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, mStorageComponent.execute().getStorage(), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button2:
                 Toast.makeText(this, mPerson.getName() + "----" + mPerson.getAge(), Toast.LENGTH_SHORT).show();

@@ -2,7 +2,7 @@ package com.zl.dagger2example.di.components;
 
 import com.zl.dagger2example.di.modules.ModuleA;
 import com.zl.dagger2example.di.modules.ModuleB;
-import com.zl.dagger2example.ui.SubComponentActivity;
+import com.zl.dagger2example.di.modules.ModuleC;
 
 import dagger.Component;
 
@@ -12,6 +12,6 @@ import dagger.Component;
 @Component(modules = {ModuleA.class, ModuleB.class})
 public interface SomeClassASubComponent {
 
-    SomeClassBSubComponent someClassBSubComponent(ModuleB moduleB);
-    void inject(SubComponentActivity activity);
+    SomeClassBSubComponent someClassBSubComponent(ModuleC moduleC);
+    //void inject(SubComponentActivity activity);
 }

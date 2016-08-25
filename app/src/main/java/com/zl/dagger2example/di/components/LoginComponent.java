@@ -10,9 +10,7 @@ import dagger.Component;
  * Created by weilu on 16/1/27.
  */
 @LoginScope
-@Component(modules = {
-        LoginModule.class
-})
+@Component(modules = { LoginModule.class} )
 public interface LoginComponent {
     void inject(MyApplication myApplication);
 }

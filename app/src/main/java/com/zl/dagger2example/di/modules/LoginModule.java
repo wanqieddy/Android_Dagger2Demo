@@ -21,6 +21,7 @@ public class LoginModule {
         mPerson.setName("WeiLu");
         return mPerson;
     }
+
     @Provides
     Login provideLogin() {
         Login mLogin = new Login();
